@@ -21,7 +21,8 @@ namespace circustrein
 
         public void SortingAnimals(List<Animal> animalsperron)
         {  //sortedlist problem everyting carnivoor 
-            _sortedlist = animalsperron.OrderBy(a => a.Diet).ThenBy(a => a.Weight).ToList();
+            _sortedlist = animalsperron.OrderBy(a => a.Diet).ToList();
+                //.ThenBy(a => a.Weight)
         }
 
         public bool WagonAvailable(Animal animal)
