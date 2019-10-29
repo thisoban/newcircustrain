@@ -17,6 +17,10 @@ namespace circustrein
             Animalsinwagon = new List<Animal>();
             PLaceAnimal(animal);
         }
+        public Wagon()
+        {
+
+        }
 
         public void PLaceAnimal(Animal newAnimal)
         {
@@ -28,15 +32,23 @@ namespace circustrein
         {
             foreach (Animal wagonAnimal in Animalsinwagon)
             {
+                if (newAnimal.Diet == Diet.carnivoor)
+                {
+                    break;
+                }
                 if (wagonAnimal.Diet == Diet.carnivoor)
                 {
                     //gaat daarna vergelijken of current dier groter is dan carnivoor
                     if (SizeChecker(wagonAnimal, newAnimal))
                     {
-                        PLaceAnimal(newAnimal);
-                        break;
+                        if (CapacityCheck(newAnimal))
+                        {
+                            PLaceAnimal(newAnimal);
+                            break;
+                        }
                     }
                 }
+             
                 if (CapacityCheck(newAnimal))
                 {
                     PLaceAnimal(newAnimal);

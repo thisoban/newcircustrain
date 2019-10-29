@@ -33,12 +33,13 @@ namespace circustrein
                 {
                     if (wagon.Capacity < 10)
                     {
+                        Wagon wagon1 = new Wagon();
+                        wagon1.AnimalsChecker(animal);
                         return true;
                     }
                     return false;
                 }
             }
-
             return false;
         }
         public void AddWagonToList(Animal animal)
