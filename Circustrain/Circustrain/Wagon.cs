@@ -8,12 +8,12 @@ namespace circustrein
 {
     public class Wagon
     {
-        public int Capacity { get; set; }
+        public int AnimalsWeightInWagon { get; set; }
 
         private readonly List<Animal> Animalsinwagon;
         public Wagon(Animal animal)
         {
-            Capacity = 0;
+            AnimalsWeightInWagon = 0;
             Animalsinwagon = new List<Animal>();
             PLaceAnimal(animal);
         }
@@ -25,7 +25,7 @@ namespace circustrein
         public void PLaceAnimal(Animal newAnimal)
         {
             Animalsinwagon.Add(newAnimal);
-            Capacity += newAnimal.Weight;
+            AnimalsWeightInWagon += newAnimal.Weight;
         }
 
         public void AnimalsChecker(Animal newAnimal)
@@ -65,7 +65,7 @@ namespace circustrein
 
         private bool DoesTheWeightFit(Animal ianimal)
         {
-            if (Capacity + ianimal.Weight <= 10) return true;
+            if (AnimalsWeightInWagon + ianimal.Weight <= 10) return true;
             return false;
         }
     }

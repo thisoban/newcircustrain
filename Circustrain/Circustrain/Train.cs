@@ -30,7 +30,7 @@ namespace circustrein
             {
                 foreach (Wagon wagon in _wagons)
                 {
-                    if (wagon.Capacity < 10)
+                    if (wagon.AnimalsWeightInWagon < 10)
                     {
                         Wagon wagon1 = new Wagon();
                         wagon1.AnimalsChecker(animal);
