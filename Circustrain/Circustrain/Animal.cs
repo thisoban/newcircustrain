@@ -14,7 +14,7 @@ namespace circustrein
         public Animal(int weight, Diet diet)
         {
             Weight = weight;
-            Diet = Diet;
+            Diet = diet;
         }
 
     }

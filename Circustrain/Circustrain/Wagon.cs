@@ -10,7 +10,7 @@ namespace circustrein
     {
         public int Capacity { get; set; }
 
-        private List<Animal> Animalsinwagon;
+        private readonly List<Animal> Animalsinwagon;
         public Wagon(Animal animal)
         {
             Capacity = 0;
@@ -39,9 +39,9 @@ namespace circustrein
                 if (wagonAnimal.Diet == Diet.carnivoor)
                 {
                     //gaat daarna vergelijken of current dier groter is dan carnivoor
-                    if (SizeChecker(wagonAnimal, newAnimal))
+                    if (HerbioreBiggerThenCarnivore(wagonAnimal, newAnimal))
                     {
-                        if (CapacityCheck(newAnimal))
+                        if (DoesTheWeightFit(newAnimal))
                         {
                             PLaceAnimal(newAnimal);
                             break;
@@ -49,7 +49,7 @@ namespace circustrein
                     }
                 }
              
-                if (CapacityCheck(newAnimal))
+                if (DoesTheWeightFit(newAnimal))
                 {
                     PLaceAnimal(newAnimal);
                     break;
@@ -57,13 +57,13 @@ namespace circustrein
             }
         }
 
-        private bool SizeChecker(Animal wagonanimal, Animal animal)
+        private bool HerbioreBiggerThenCarnivore(Animal wagonanimal, Animal animal)
         {
             if (wagonanimal.Weight <= animal.Weight) return true;
             return false;
         }
 
-        private bool CapacityCheck(Animal ianimal)
+        private bool DoesTheWeightFit(Animal ianimal)
         {
             if (Capacity + ianimal.Weight <= 10) return true;
             return false;

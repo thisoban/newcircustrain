@@ -16,20 +16,25 @@ namespace CircustrainTest
         public void Test1()
         {
             Animal animal1 = new Animal(1, Diet.carnivoor);
-            Animal animal2 = new Animal(3, Diet.herbivoor);
-            Animal animal3 = new Animal(5, Diet.carnivoor);
+            Animal animal2 = new Animal(5, Diet.herbivoor);
+            Animal animal3 = new Animal(5, Diet.herbivoor);
+           
             Animal animal4 = new Animal(3, Diet.herbivoor);
+            Animal animal5 = new Animal(3, Diet.herbivoor);
+            Animal animal6 = new Animal(3, Diet.herbivoor);
             List<Animal> animalsstation = new List<Animal>
             {
-                animal1,
-                animal2,
+                animal6,
+                animal4,
                 animal3,
-                animal4
+                animal2,
+                animal1,
+                animal5
             };
 
 
             Train train = new Train(animalsstation);
-            train.SortingAnimals(animalsstation);
+           
 
             Assert.Pass();
         }
