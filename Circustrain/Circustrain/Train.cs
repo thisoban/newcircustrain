@@ -19,10 +19,7 @@ namespace circustrein
 
         }
 
-        public void SortingAnimals(List<Animal> animalsperron)
-        {  //sortedlist problem everyting carnivoor 
-            _sortedlist = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).Reverse().ToList();
-        }
+       
 
         public bool WagonAvailable(Animal animal)
         {
@@ -30,13 +27,8 @@ namespace circustrein
             {
                 foreach (Wagon wagon in _wagons)
                 {
-                    if (wagon.AnimalsWeightInWagon < 10)
-                    {
-                        //Wagon wagon1 = new Wagon();
                         wagon.AnimalsChecker(animal);
                         return true;
-                    }
-                    return false;
                 }
             }
             return false;
@@ -46,11 +38,17 @@ namespace circustrein
             _wagons.Add(new Wagon(animal));
         }
 
-        //geef pARAM MET DIEREN
+        List<Animal> animals = new List<Animal>();
+        public void SortingAnimals(List<Animal> animalsperron)
+        {
+            animals = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).Reverse().ToList();
+        }
+
+        //geef param met dieren
         public void PlaceAnimal()
         {
             //sorteren
-            foreach (Animal animal in _sortedlist)
+            foreach (Animal animal in animals)
             {
                 if (WagonAvailable(animal) == false)
                 {
