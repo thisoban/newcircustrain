@@ -9,11 +9,11 @@ namespace circustrein
     public class Train
     {
         private List<Wagon> _wagons;
-        private List<Animal> _sortedlist;
+        //private List<Animal> _sortedlist;
 
         public Train(List<Animal> perronanimals)
         {
-            SortingAnimals(perronanimals);
+            //SortingAnimals(perronanimals);
             _wagons = new List<Wagon>();
 
 
@@ -32,8 +32,8 @@ namespace circustrein
                 {
                     if (wagon.AnimalsWeightInWagon < 10)
                     {
-                        Wagon wagon1 = new Wagon();
-                        wagon1.AnimalsChecker(animal);
+                        //Wagon wagon1 = new Wagon();
+                        wagon.AnimalsChecker(animal);
                         return true;
                     }
                     return false;
@@ -45,8 +45,11 @@ namespace circustrein
         {
             _wagons.Add(new Wagon(animal));
         }
+
+        //geef pARAM MET DIEREN
         public void PlaceAnimal()
         {
+            //sorteren
             foreach (Animal animal in _sortedlist)
             {
                 if (WagonAvailable(animal) == false)

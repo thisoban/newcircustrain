@@ -30,6 +30,7 @@ namespace circustrein
 
         public void AnimalsChecker(Animal newAnimal)
         {
+            //checks: does it fit  AND DoesAnimalGetEaten
             foreach (Animal wagonAnimal in Animalsinwagon)
             {
                 if (newAnimal.Diet == Diet.carnivoor)
