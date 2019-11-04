@@ -17,17 +17,7 @@ namespace circustrein
             Animalsinwagon = new List<Animal>();
             PLaceAnimal(animal);
         }
-        public Wagon()
-        {
-
-        }
-
-        public void PLaceAnimal(Animal newAnimal)
-        {
-            Animalsinwagon.Add(newAnimal);
-            AnimalsWeightInWagon += newAnimal.Weight;
-        }
-
+        
         public void AnimalsChecker(Animal newAnimal)
         {
             //checks: does it fit  AND DoesAnimalGetEaten
@@ -56,6 +46,12 @@ namespace circustrein
                     break;
                 }
             }
+        }
+
+        private void PLaceAnimal(Animal newAnimal)
+        {
+            Animalsinwagon.Add(newAnimal);
+            AnimalsWeightInWagon += newAnimal.Weight;
         }
 
         private bool HerbioreBiggerThenCarnivore(Animal wagonanimal, Animal animal)
