@@ -21,11 +21,13 @@ namespace circustrein
         //geef param met dieren
         private void PlaceAnimals(List<Animal>anmialsperron)
         {
-            List<Animal> animals = new List<Animal>();
+            List<Animal> carnivoor = new List<Animal>();
+            List<Animal> herbivoor = new List<Animal>();
+            anmialsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
             //sorteren
-            animals = anmialsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).Reverse().ToList();
-            
-            foreach (Animal animal in animals)
+            // carnivoor = anmialsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
+            // herbivoor = anmialsperron.Where(a => a.Diet == Diet.herbivoor);
+            foreach (Animal animal in anmialsperron)
             {
                 if (WagonAvailable(animal) == false)
                 {
