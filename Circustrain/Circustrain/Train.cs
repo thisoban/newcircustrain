@@ -21,8 +21,8 @@ namespace circustrein
         //geef param met dieren
         private void PlaceAnimals(List<Animal>anmialsperron)
         {
-            List<Animal> carnivoor = new List<Animal>();
-            List<Animal> herbivoor = new List<Animal>();
+         //   List<Animal> carnivoor = new List<Animal>();
+         //   List<Animal> herbivoor = new List<Animal>();
             anmialsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
             //sorteren
             // carnivoor = anmialsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
