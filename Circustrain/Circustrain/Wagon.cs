@@ -30,7 +30,7 @@ namespace circustrein
                 if (wagonAnimal.Diet == Diet.carnivoor)
                 {
                     //gaat daarna vergelijken of current dier groter is dan carnivoor
-                    if (HerbioreBiggerThenCarnivore(wagonAnimal, newAnimal))
+                    if (HerbivoreBiggerThenCarnivore(wagonAnimal, newAnimal))
                     {
                         if (DoesTheWeightFit(newAnimal))
                         {
@@ -54,7 +54,7 @@ namespace circustrein
             AnimalsWeightInWagon += newAnimal.Weight;
         }
 
-        private bool HerbioreBiggerThenCarnivore(Animal wagonanimal, Animal animal)
+        private bool HerbivoreBiggerThenCarnivore(Animal wagonanimal, Animal animal)
         {
             if (wagonanimal.Weight <= animal.Weight) return true;
             return false;

@@ -1,5 +1,6 @@
 using circustrein;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace CircustrainTest
@@ -30,7 +31,6 @@ namespace CircustrainTest
 
             Train train = new Train(animalsstation);
            
-
             Assert.Pass();
         }
     }

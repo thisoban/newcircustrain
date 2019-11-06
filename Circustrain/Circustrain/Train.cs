@@ -13,21 +13,24 @@ namespace circustrein
 
         public Train(List<Animal> perronanimals)
         {
-            //SortingAnimals(perronanimals);
             _wagons = new List<Wagon>();
             PlaceAnimals(perronanimals);
         }
+        public Train(){
+
+        }
+        public void SortAnimals(List<Animal> animalsperron)
+        {
+            List<Animal> animals = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
+        }
 
         //geef param met dieren
-        private void PlaceAnimals(List<Animal>anmialsperron)
+        public void PlaceAnimals(List<Animal>animalsperron)
         {
-         //   List<Animal> carnivoor = new List<Animal>();
-         //   List<Animal> herbivoor = new List<Animal>();
-            anmialsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
+            List<Animal> animals = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
+
             //sorteren
-            // carnivoor = anmialsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
-            // herbivoor = anmialsperron.Where(a => a.Diet == Diet.herbivoor);
-            foreach (Animal animal in anmialsperron)
+            foreach (Animal animal in animals)
             {
                 if (WagonAvailable(animal) == false)
                 {
@@ -41,12 +44,10 @@ namespace circustrein
             if (_wagons.Count > 0)
                 foreach (Wagon wagon in _wagons)
                 {
-                    {
                         wagon.AnimalsChecker(animal);
                         return true;
-                    }
+                    
                 }
-            AddWagonToList(animal);
             return false;
         }
         private void AddWagonToList(Animal animal)
