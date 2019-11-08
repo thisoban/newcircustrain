@@ -10,49 +10,51 @@ namespace circustrein
     {
         private readonly List<Wagon> _wagons;
         //private List<Animal> _sortedlist;
-
+        public IEnumerable<Wagon> Wagons { get { return _wagons; } }
         public Train(List<Animal> perronanimals)
         {
             _wagons = new List<Wagon>();
-            PlaceAnimals(perronanimals);
-        }
-        public Train(){
-
-        }
-        public void SortAnimals(List<Animal> animalsperron)
-        {
-            List<Animal> animals = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
+            CanAnimalBePlaced(perronanimals);
         }
 
-        //geef param met dieren
-        public void PlaceAnimals(List<Animal>animalsperron)
+        public void IThink()
         {
-            List<Animal> animals = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ThenBy(a => a.Diet == Diet.herbivoor).ToList();
+           // hier moet nog een naam voor komen en can animalbeplaced in uitvoeren
+        }
+        
+        public bool CanAnimalBePlaced(List<Animal>animalsperron)
+        {
+            List<Animal> animals = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ToList();
 
             //sorteren
             foreach (Animal animal in animals)
             {
-                if (WagonAvailable(animal) == false)
+                if (IsthereSpaceInAnyWagon(animal) == false)
                 {
-                    AddWagonToList(animal);
+                    //moe teen ding doen moet opsliten in tweeen
+                    //AddWagonToList();
+                    return false;
                 }
+                return true;
             }
+            return false ;
         }
-
-        private bool WagonAvailable(Animal animal)
+       
+        private bool IsthereSpaceInAnyWagon(Animal animal)
         {
             if (_wagons.Count > 0)
+            {
                 foreach (Wagon wagon in _wagons)
                 {
-                        wagon.AnimalsChecker(animal);
-                        return true;
-                    
+                    wagon.CheckingAnimalFit(animal);
+                    return true;
                 }
+            }
             return false;
         }
-        private void AddWagonToList(Animal animal)
+        private void AddWagonToList(Wagon wagon)
         {
-            _wagons.Add(new Wagon(animal));
+            _wagons.Add(wagon);
         }
     }
 }
