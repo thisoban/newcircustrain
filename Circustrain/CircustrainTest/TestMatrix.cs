@@ -5,40 +5,68 @@ using circustrein;
 
 namespace CircustrainTest
 {
-  public  class TestMatrix
-    {
+  public class TestMatrix
+  {
+        readonly List<Animal> _animalsperron = new List<Animal>();
+        
         public void Test()
         {
             Animal[][] animalsarray =
             {
-             new Animal[] {
-              new Animal  (1, Diet.carnivoor),
-              new Animal  (3, Diet.carnivoor),
-              new Animal  (5, Diet.carnivoor),
-              new Animal  (1, Diet.herbivoor),
-              new Animal  (3, Diet.herbivoor),
-              new Animal  (5, Diet.herbivoor)
+            new Animal[] {
+              new Animal  (1, Diet.Carnivoor),
+              new Animal  (3, Diet.Carnivoor),
+              new Animal  (5, Diet.Carnivoor),
+              new Animal  (1, Diet.Herbivoor),
+              new Animal  (3, Diet.Herbivoor),
+              new Animal  (5, Diet.Herbivoor)
 
              },
              new Animal[]
              {
-              new Animal  (1, Diet.carnivoor),
-              new Animal  (3, Diet.carnivoor),
-              new Animal  (5, Diet.carnivoor),
-              new Animal  (1, Diet.herbivoor),
-              new Animal  (3, Diet.herbivoor),
-              new Animal  (5, Diet.herbivoor)
+              new Animal  (1, Diet.Carnivoor),
+              new Animal  (3, Diet.Carnivoor),
+              new Animal  (5, Diet.Carnivoor),
+              new Animal  (1, Diet.Herbivoor),
+              new Animal  (3, Diet.Herbivoor),
+              new Animal  (5, Diet.Herbivoor)
              }
             };
 
-               
-             //new Animal  (1, Diet.carnivoor),
-            
-             //animal3 = (5, Diet.carnivoor),
-             //animal4 = (1, Diet.herbivoor),
-             //animal5 = (3, Diet.herbivoor),
-             //animal6 = (5, Diet.herbivoor)];
+
+           bool[][] TrueBoolMatrix = // animals from one side to other side
+           {
+                new bool[]
+                {
+                    false, false, false, false, true, true
+                },
+                new bool[]
+                {
+                    false, false, false, false, true , true
+                },
+                new bool[]
+                {
+                    false, false, false, false, false, false
+                },
+                new bool[]
+                {
+                    false, false, false, true, true, true
+                },
+                new bool[]
+                {
+                    true, false, false, true, true, true
+                },
+                new bool[]
+                {
+                    true, true, false, true, true, true
+                }
+           };
            
+        }
+        
+        public void TestMatrixTesting()
+        {
+          
         }
     }
 }

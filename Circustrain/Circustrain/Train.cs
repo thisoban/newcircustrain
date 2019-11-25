@@ -11,42 +11,48 @@ namespace circustrein
         private readonly List<Wagon> _wagons;
         //private List<Animal> _sortedlist;
         public IEnumerable<Wagon> Wagons { get { return _wagons; } }
-        public Train(List<Animal> perronanimals)
+        public Train()
         {
             _wagons = new List<Wagon>();
-            CanAnimalBePlaced(perronanimals);
         }
-
-        public void IThink()
+        public void SortAnimals(List<Animal> animalsperron)
         {
-           // hier moet nog een naam voor komen en can animalbeplaced in uitvoeren
+            List<Animal> CarnivoorAnimals = animalsperron.Where(s => s.Diet == Diet.Carnivoor).ToList();
+            List<Animal> HerbivoorAnimals = animalsperron.Where(s => s.Diet == Diet.Herbivoor).ToList();
+            DistrubateAnimal(CarnivoorAnimals);
+            DistrubateAnimal(HerbivoorAnimals);
         }
-        
-        public bool CanAnimalBePlaced(List<Animal>animalsperron)
+        public bool DistrubateAnimal(List<Animal>animalsperron)
         {
-            List<Animal> animals = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ToList();
+           // List<Animal> animals = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ToList();
 
             //sorteren
-            foreach (Animal animal in animals)
+            foreach (Animal animal in animalsperron)
             {
-                if (IsthereSpaceInAnyWagon(animal) == false)
+                if (animal.Diet == Diet.Carnivoor)
                 {
-                    //moe teen ding doen moet opsliten in tweeen
-                    //AddWagonToList();
-                    return false;
+                    AddAnimalToWagon(animal);
                 }
-                return true;
+                else
+                {
+                    if (IsthereSpaceInAnyWagons(animal) == false)
+                    {
+                        AddAnimalToWagon(animal);
+                        return false;
+                    }
+                    return true;
+                }
             }
-            return false ;
+            return false;
         }
        
-        private bool IsthereSpaceInAnyWagon(Animal animal)
+        private bool IsthereSpaceInAnyWagons(Animal animal)
         {
             if (_wagons.Count > 0)
             {
                 foreach (Wagon wagon in _wagons)
                 {
-                    wagon.CheckingAnimalFit(animal);
+                    if(wagon.CheckIfAnimalFits(animal)==true)
                     return true;
                 }
             }
@@ -55,6 +61,11 @@ namespace circustrein
         private void AddWagonToList(Wagon wagon)
         {
             _wagons.Add(wagon);
+        }
+        private void AddAnimalToWagon(Animal animal)
+        {
+            Wagon wagon = new Wagon(animal);
+            AddWagonToList(wagon);
         }
     }
 }

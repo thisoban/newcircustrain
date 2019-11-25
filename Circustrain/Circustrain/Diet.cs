@@ -8,6 +8,6 @@ namespace circustrein
 {
     public enum Diet
     {
-        carnivoor, herbivoor
+        Carnivoor, Herbivoor
     }
 }

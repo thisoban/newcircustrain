@@ -14,14 +14,17 @@ namespace circustrein
         public Wagon(Animal animal)
         {
             _animalsinwagon = new List<Animal>();
-            PLacingAnimal(animal);
+        }
+        public Wagon()
+        {
+
         }
 
         public bool IsWagonAnimalCarnivore()
         {
             foreach(Animal wagonAnimal in _animalsinwagon)
             {
-                if (wagonAnimal.Diet == Diet.carnivoor)
+                if (wagonAnimal.Diet == Diet.Carnivoor)
                 {
                     return false;
                 }
@@ -29,45 +32,42 @@ namespace circustrein
             return true;
         }
 
-        public void CheckingAnimalFit(Animal newAnimal)
+        public bool CheckIfAnimalFits(Animal newAnimal)
         {
             //checks: does it fit  AND DoesAnimalGetEaten
             foreach (Animal wagonAnimal in _animalsinwagon)
             {
-               
-                if (wagonAnimal.Diet == Diet.carnivoor)
+                if (wagonAnimal.Diet == Diet.Carnivoor)
                 {
                     //gaat daarna vergelijken of current dier groter is dan carnivoor
-                    if (HerbivoreBiggerThenCarnivore(wagonAnimal, newAnimal))
+                    if (wagonAnimal.HerbivoreBiggerThenCarnivore(wagonAnimal, newAnimal) == true)
                     {
-                        if (DoesTheWeightFit(newAnimal))
+                        if (DoesAnimalWeightFit(newAnimal) == true)
                         {
-                            PLacingAnimal(newAnimal);
-                            break;
+                            PlaceAnimal(newAnimal);
+                            return true;
                         }
+                       return false;
                     }
                 }
              
-                if (DoesTheWeightFit(newAnimal))
+                if (DoesAnimalWeightFit(newAnimal))
                 {
-                    PLacingAnimal(newAnimal);
-                    break;
+                    PlaceAnimal(newAnimal);
+                    return true;  
                 }
+                return false;
             }
+            return false;
         }
 
-        private void PLacingAnimal(Animal newAnimal)
+        private void PlaceAnimal(Animal newAnimal)
         { 
             _animalsinwagon.Add(newAnimal);
         }
 
-        private bool HerbivoreBiggerThenCarnivore(Animal wagonanimal, Animal animal)
-        {
-            if (wagonanimal.Weight <= animal.Weight) return true;
-            return false;
-        }
 
-        private bool DoesTheWeightFit(Animal ianimal)
+        private bool DoesAnimalWeightFit(Animal ianimal)
         {
             int totalweight = 0;
 

@@ -17,5 +17,10 @@ namespace circustrein
             Diet = diet;
         }
 
+        public bool HerbivoreBiggerThenCarnivore(Animal wagonanimal, Animal animal)
+        {
+            if (wagonanimal.Weight <= animal.Weight) return true;
+            return false;
+        }
     }
 }
