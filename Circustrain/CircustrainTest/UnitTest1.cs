@@ -32,7 +32,7 @@ namespace CircustrainTest
             };
             
             train.SortAnimals(animalsstation);
-            Assert.AreEqual(3, train.Wagons.Count());
+            Assert.AreEqual(2, train.Wagons.Count());
         }
         [Test]
         public void TestListAnimals2()

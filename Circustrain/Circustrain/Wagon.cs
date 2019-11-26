@@ -14,6 +14,7 @@ namespace circustrein
         public Wagon(Animal animal)
         {
             _animalsinwagon = new List<Animal>();
+            _animalsinwagon.Add(animal);
         }
         public Wagon()
         {
