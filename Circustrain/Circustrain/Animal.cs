@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace circustrein
+﻿namespace circustrein
 {
     public class Animal
     {
@@ -17,9 +11,13 @@ namespace circustrein
             Diet = diet;
         }
 
-        public bool HerbivoreBiggerThenCarnivore(Animal wagonanimal, Animal animal)
+        public bool IsHerbivoreBiggerThenCarnivore( Animal animal)
         {
-            if (wagonanimal.Weight <= animal.Weight) return true;
+            if (animal.Diet == Diet.Herbivoor)
+            {
+                if (Weight < animal.Weight) return true;
+                return false;
+            }
             return false;
         }
     }

@@ -15,38 +15,33 @@ namespace circustrein
         {
             _wagons = new List<Wagon>();
         }
-        public void SortAnimals(List<Animal> animalsperron)
+        public void SortAnimals(List<Animal> animalsPerron)
         {
-            List<Animal> CarnivoorAnimals = animalsperron.Where(s => s.Diet == Diet.Carnivoor).ToList();
-            List<Animal> HerbivoorAnimals = animalsperron.Where(s => s.Diet == Diet.Herbivoor).ToList();
-            DistrubateAnimal(CarnivoorAnimals);
-            DistrubateAnimal(HerbivoorAnimals);
+            List<Animal> CarnivoorAnimals = animalsPerron.Where(s => s.Diet == Diet.Carnivoor).ToList();
+            List<Animal> HerbivoorAnimals = animalsPerron.Where(s => s.Diet == Diet.Herbivoor).ToList();
+            DistrubateAnimals(CarnivoorAnimals);
+            DistrubateAnimals(HerbivoorAnimals);
         }
-        public bool DistrubateAnimal(List<Animal>animalsperron)
+        public void DistrubateAnimals(List<Animal>animalsperron)
         {
-           // List<Animal> animals = animalsperron.OrderBy(a => a.Diet).ThenByDescending(a => a.Weight).ToList();
-
-            //sorteren
+          
             foreach (Animal animal in animalsperron)
             {
                 if (animal.Diet == Diet.Carnivoor)
                 {
-                    AddAnimalToWagon(animal);
+                    AddAnimalToNewWagon(animal);
                 }
                 else
                 {
-                    if (IsthereSpaceInAnyWagons(animal) == false)
+                    if (IsThereSpaceInAnyWagons(animal) == false)
                     {
-                        AddAnimalToWagon(animal);
-                        return false;
+                        AddAnimalToNewWagon(animal);
                     }
-                    return true;
                 }
             }
-            return false;
         }
        
-        private bool IsthereSpaceInAnyWagons(Animal animal)
+        private bool IsThereSpaceInAnyWagons(Animal animal)
         {
             if (_wagons.Count > 0)
             {
@@ -58,14 +53,14 @@ namespace circustrein
             }
             return false;
         }
-        private void AddWagonToList(Wagon wagon)
+        private void AddWagon(Wagon wagon)
         {
             _wagons.Add(wagon);
         }
-        private void AddAnimalToWagon(Animal animal)
+        private void AddAnimalToNewWagon(Animal animal)
         {
             Wagon wagon = new Wagon(animal);
-            AddWagonToList(wagon);
+            AddWagon(wagon);
         }
     }
 }
