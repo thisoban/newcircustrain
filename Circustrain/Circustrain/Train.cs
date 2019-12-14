@@ -41,7 +41,7 @@ namespace circustrein
             }
         }
        
-        private bool IsThereSpaceInAnyWagons(Animal animal)
+        private bool IsThereSpaceInAnyWagons    (Animal animal)
         {
             if (_wagons.Count > 0)
             {
