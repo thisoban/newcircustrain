@@ -41,14 +41,17 @@ namespace circustrein
             }
         }
        
-        private bool IsThereSpaceInAnyWagons    (Animal animal)
+        private bool IsThereSpaceInAnyWagons (Animal animal)
         {
             if (_wagons.Count > 0)
             {
                 foreach (Wagon wagon in _wagons)
                 {
-                    if(wagon.CheckIfAnimalFits(animal)==true)
-                    return true;
+                    if (wagon.CheckIfAnimalFits(animal) == true)
+                    {
+                        wagon.PlaceAnimal(animal);
+                        return true;
+                    }
                 }
             }
             return false;

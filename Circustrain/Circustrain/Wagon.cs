@@ -8,33 +8,41 @@ namespace circustrein
 {
     public class Wagon
     {
-        private  static List<Animal> _animalsinwagon;
+        private readonly List<Animal> _animalsinwagon;
         public IEnumerable<Animal> Animals { get { return _animalsinwagon; } }
 
         public Wagon(Animal animal)
         {
             _animalsinwagon = new List<Animal>();
-            TryPlaceAnimal(animal);
+            PlaceAnimal(animal);
         }
         public Wagon()
         {
             _animalsinwagon = new List<Animal>();
         }
 
-        public bool IsWagonAnimalCarnivore()
-        {
-            foreach(Animal wagonAnimal in _animalsinwagon)
-            {
-                if (wagonAnimal.Diet == Diet.Carnivoor)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        //public bool IsWagonAnimalCarnivore()
+        //{
+        //    foreach(Animal wagonAnimal in _animalsinwagon)
+        //    {
+        //        if (wagonAnimal.Diet == Diet.Carnivoor)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
 
         public bool CheckIfAnimalFits(Animal newAnimal)
         {
+
+            if (_animalsinwagon.Count == 0)
+            {
+                return true;
+            }
+
+            bool approved = true;
+            
             foreach (Animal wagonAnimal in _animalsinwagon)
             {
                 if (wagonAnimal.Diet == Diet.Carnivoor)
@@ -55,17 +63,16 @@ namespace circustrein
                 }
                 return false;
             }
-            return false;
-            }
 
-        public bool TryPlaceAnimal(Animal newAnimal)
+            return false;
+        }
+
+        public void PlaceAnimal(Animal newAnimal)
         {
             if(CheckIfAnimalFits(newAnimal) == true)
             {
                 _animalsinwagon.Add(newAnimal);
-                return true;
             }
-            return false;
         }
 
 
