@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircustrainV2", "Circustrai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircustrainV2Console", "CircustrainV2Console\CircustrainV2Console.csproj", "{EA40FDF4-45DB-4508-968F-939A228D85BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{3D3E911E-3E03-4676-B284-AD054F70C0F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CicustrainV2Test", "UnitTestProject1\CicustrainV2Test.csproj", "{3D3E911E-3E03-4676-B284-AD054F70C0F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
